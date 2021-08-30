@@ -9,7 +9,7 @@ function Search () {
   const [postsPerPage, setPostsPerPage] = useState(12);
   const [repos, setRepos] = useState([]);
 
-  const searchRepos = async (keyword) => {
+  const searchRepos = async () => {
     await axios
       .get(`https://pixabay.com/api/?key=23130780-02838ef9e7fd441ed11d8cbfa&q=cats&image_type=all&per_page=100`)
       .then(result => setRepos(result.data.hits));

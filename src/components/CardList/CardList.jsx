@@ -1,53 +1,65 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import Card from '../Card/Card.jsx'
 import './CardList.scss'
 
 function CardList ({
   items,
 }) {
-  const [valueOfSort, setValueOfSort] = useState(items)
 
-    const onChangeStatus = (event) => {
-      const { value } = event.target;
-  
-      switch (value) {
-        case 'Sort by':
-          setValueOfSort()
-          break;
-  
-        case 'Likes':
-          setValueOfSort(items.sort(function(a, b) {
-            return b.likes - a.likes;
-          }))
-          break;
-  
-        case 'Comments':
-          setValueOfSort(items.sort(function(a, b) {
-            return  b.comments - a.comments;
-          }))
-          break;
-  
-        default:
-          break;
-      }
-    }
+  const [valueOfSort, setValueOfSort] = useState([...items])
+  console.log(valueOfSort);
+  console.log(items);
+
+    const onChangeStatus = useCallback (
+      ( event) => {
+        const { value } = event.target;
+        switch (value) {
+          case 'Sort by':
+            setValueOfSort([...items])
+            break;
     
-    const [searchTerm, setSearchTerm] = React.useState("");
-    const [searchResults, setSearchResults] = React.useState([]);
+          case 'Likes':
+            setValueOfSort([...items].sort(function(a, b) {
+              return b.likes - a.likes;
+            }))
+            break;
+    
+          case 'Comments':
+            setValueOfSort([...items].sort(function(a, b) {
+              return  b.comments - a.comments;
+            }))
+            break;
+    
+          default:
+            break;
+        }
+      }, [items]
+    ) 
   
-    let a = items.map(item => (
-      item.tags
-    ))
+      
+    
+    const [searchTerm, setSearchTerm] = useState("");
+    // const [searchResults, setSearchResults] = useState([]);
 
-    const handleChange = event => {
-      setSearchTerm(event.target.value);
-    };
-    React.useEffect(() => {
-      const results = a.filter(person =>
-        person.toLowerCase().includes(searchTerm)
-      );
-      setSearchResults(results);
-    }, [searchTerm]);
+    const handleChange = useCallback (
+      (event) => {
+        setSearchTerm(event.target.value);
+        let a = items.map(item => (
+          item.tags
+        ))
+    
+        const results = a.filter(person =>
+          person.toLowerCase().includes(searchTerm)
+        );
+        setValueOfSort(results);
+      }, [items]
+    ) 
+    // useEffect(() => {
+    //   const results = a.filter(person =>
+    //     person.toLowerCase().includes(searchTerm)
+    //   );
+    //   setValueOfSort(results);
+    // }, [searchTerm]);
 
     return (
       <>

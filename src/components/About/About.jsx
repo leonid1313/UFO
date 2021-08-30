@@ -4,9 +4,6 @@ import './About.scss'
 function About ({
   ...props
 }) {
-
-  console.log(props.location.data.largeImageURL);
-
     return (
       <div className="container-about">
         <div className="container-card container-card-about">
