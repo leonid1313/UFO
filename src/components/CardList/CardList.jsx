@@ -6,9 +6,8 @@ function CardList ({
   items,
 }) {
 
-  const [valueOfSort, setValueOfSort] = useState([...items])
-  console.log(valueOfSort);
   console.log(items);
+  const [valueOfSort, setValueOfSort] = useState([...items])
 
     const onChangeStatus = useCallback (
       ( event) => {
@@ -36,30 +35,32 @@ function CardList ({
       }, [items]
     ) 
   
-      
-    
-    const [searchTerm, setSearchTerm] = useState("");
-    // const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const handleChange = useCallback (
-      (event) => {
+    // let a = items.map(item => (
+    //   item.tags
+    // ))
+
+    const handleChange = (event) => {
         setSearchTerm(event.target.value);
-        let a = items.map(item => (
-          item.tags
-        ))
-    
-        const results = a.filter(person =>
-          person.toLowerCase().includes(searchTerm)
-        );
-        setValueOfSort(results);
-      }, [items]
-    ) 
+      }
+
+    const find = () => {
+      const results = items.filter(person =>
+        person.tags.toLowerCase().includes(searchTerm)
+      );
+      console.log(results, 'aa');
+      setValueOfSort(results);
+    }
+
     // useEffect(() => {
     //   const results = a.filter(person =>
     //     person.toLowerCase().includes(searchTerm)
     //   );
     //   setValueOfSort(results);
     // }, [searchTerm]);
+
+    useEffect(() => setValueOfSort(items), [items])
 
     return (
       <>
@@ -72,6 +73,8 @@ function CardList ({
               value={searchTerm}
               onChange={handleChange}
             />
+
+            <button className="button-find" onClick={find}>Find</button>
           </div>
           <select onChange={onChangeStatus}  className="sort">
             <option value="Sort by">Sort by</option>
@@ -80,7 +83,7 @@ function CardList ({
           </select>
         </div>
         <div className="container">
-          {items.map(item => (
+          {valueOfSort.map(item => (
             <>
               <Card
                 key={item.id}

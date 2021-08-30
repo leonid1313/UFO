@@ -23,8 +23,6 @@ function Search () {
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     let currentPosts = repos.slice(indexOfFirstPost, indexOfLastPost);
 
-    console.log(currentPosts);
-
     const paginate = pageNumber => setCurrentPage(pageNumber);
     
     return (

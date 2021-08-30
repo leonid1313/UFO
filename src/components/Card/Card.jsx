@@ -10,6 +10,8 @@ function Card ({
   item,
 }) {
 
+  console.log(tags);
+  
   let tagsArr = tags.split(',')
 
     return (
