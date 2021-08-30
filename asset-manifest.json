@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/UFO/static/css/main.962fcfab.chunk.css",
-    "main.js": "/UFO/static/js/main.7239e7aa.chunk.js",
-    "main.js.map": "/UFO/static/js/main.7239e7aa.chunk.js.map",
+    "main.css": "/UFO/static/css/main.031ce073.chunk.css",
+    "main.js": "/UFO/static/js/main.77a3bdda.chunk.js",
+    "main.js.map": "/UFO/static/js/main.77a3bdda.chunk.js.map",
     "runtime-main.js": "/UFO/static/js/runtime-main.06c75a65.js",
     "runtime-main.js.map": "/UFO/static/js/runtime-main.06c75a65.js.map",
     "static/js/2.42d323d2.chunk.js": "/UFO/static/js/2.42d323d2.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.53b6c679.chunk.js": "/UFO/static/js/3.53b6c679.chunk.js",
     "static/js/3.53b6c679.chunk.js.map": "/UFO/static/js/3.53b6c679.chunk.js.map",
     "index.html": "/UFO/index.html",
-    "static/css/main.962fcfab.chunk.css.map": "/UFO/static/css/main.962fcfab.chunk.css.map",
+    "static/css/main.031ce073.chunk.css.map": "/UFO/static/css/main.031ce073.chunk.css.map",
     "static/js/2.42d323d2.chunk.js.LICENSE.txt": "/UFO/static/js/2.42d323d2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.06c75a65.js",
     "static/js/2.42d323d2.chunk.js",
-    "static/css/main.962fcfab.chunk.css",
-    "static/js/main.7239e7aa.chunk.js"
+    "static/css/main.031ce073.chunk.css",
+    "static/js/main.77a3bdda.chunk.js"
   ]
 }
