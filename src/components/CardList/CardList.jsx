@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import Card from '../Card/Card.jsx'
 import './CardList.scss'
-import InputSubmit from '../InputSubmit/InputSubmit.jsx'
-import Test from '../Test/Test.jsx'
 
 function CardList ({
   items,
@@ -53,18 +51,21 @@ function CardList ({
 
     return (
       <>
-        <select onChange={onChangeStatus}  className="sort">
-          <option value="Sort by">Sort by</option>
-          <option value="Likes">Likes</option>
-          <option value="Comments">Comments</option>
-        </select>
-        <div className="App">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleChange}
-          />
+        <div className="container-sort">
+          <div className="App">
+            <input
+              className="search-tags"
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleChange}
+            />
+          </div>
+          <select onChange={onChangeStatus}  className="sort">
+            <option value="Sort by">Sort by</option>
+            <option value="Likes">Likes</option>
+            <option value="Comments">Comments</option>
+          </select>
         </div>
         <div className="container">
           {items.map(item => (

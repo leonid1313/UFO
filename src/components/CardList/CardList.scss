@@ -6,3 +6,19 @@
   border: 3px solid rgb(34, 2, 2);
   margin: 20px 0;
 }
+
+.sort {
+  background-color: #fff;
+  width: 200px;
+  border: 1px solid red;
+}
+
+.container-sort {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-tags {
+  width: 200px;
+  border: 1px solid red;
+}

@@ -1,11 +1,14 @@
 .button-pagination {
   width: 70px;
   margin-left: 10px;
-  background-color: rgb(59, 209, 214);
-  border-radius: 50%;
+  background-color: #3b5998;
+  border-radius: 20%;
+  color: white;
+  border: 1px solid red;
 
   &:hover {
     background-color: rgb(163, 238, 77);
+    color: black;
   }
 }
 
