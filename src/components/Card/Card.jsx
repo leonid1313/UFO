@@ -1,47 +1,50 @@
 import React, {useState} from 'react';
 import './Card.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 
-function Card ({
+function Cards ({
   image,
   likes,
   tags,
   comments,
   item,
 }) {
-
-  console.log(tags);
-  
   let tagsArr = tags.split(',')
 
     return (
       <div className="container-card">
-        <div className="container-image">
-        <Link 
-            className="link-about"
-            to={{
-              pathname: `/about/${item}`,
-              data: item,
-            }}
-          >
-          </Link>
-          <img className="image" src={image} />
-        </div>
-        <div className="cardBody">
-          <div>
-            <p>Likes: {likes}</p>
-            <p>Comments: {comments}</p>
-            <p>Tags:
-              {tagsArr.map(item => (
-            <>
-              <span className="tags-span">{item}</span>
-            </>
-          ))}
-            </p>
+        <Card>
+          <div className="container-image">
+          <Link 
+              className="link-about"
+              to={{
+                pathname: `/about/${item.id}`,
+                data: item,
+              }}
+            >
+            </Link>
+            <Card.Img className="image" variant="top" src={image}/>
           </div>
-        </div>
+          <Card.Body>
+            <Card.Text>
+              Likes: {likes}
+            </Card.Text>
+            <Card.Text>
+              Comments: {comments}
+            </Card.Text>
+            <Card.Text>
+              Tags:
+                {tagsArr.map(item => (
+                  <>
+                    <span className="tags-span">{item}</span>
+                  </>
+                ))}
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
     )
 }
 
-export default Card
+export default Cards;

@@ -15,6 +15,8 @@ function Search () {
       .then(result => setRepos(result.data.hits));
   }
 
+  console.log(repos);
+
   useEffect(() => {
     searchRepos('')
   }, []);
@@ -27,7 +29,7 @@ function Search () {
     
     return (
       <div className="container-search">
-        <CardList items={currentPosts} />
+        <CardList items={currentPosts} repos={repos}/>
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={repos.length}

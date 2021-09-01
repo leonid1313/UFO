@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import Card from '../Card/Card.jsx'
 import './CardList.scss'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function CardList ({
   items,
+  repos,
 }) {
-
-  console.log(items);
   const [valueOfSort, setValueOfSort] = useState([...items])
 
     const onChangeStatus = useCallback (
@@ -37,50 +38,39 @@ function CardList ({
   
   const [searchTerm, setSearchTerm] = useState("");
 
-    // let a = items.map(item => (
-    //   item.tags
-    // ))
-
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
       }
 
     const find = () => {
-      const results = items.filter(person =>
-        person.tags.toLowerCase().includes(searchTerm)
-      );
-      console.log(results, 'aa');
-      setValueOfSort(results);
+      if (setSearchTerm === '') {
+        setValueOfSort([...items]);
+      } else {
+        const results = items.filter(person =>
+          person.tags.toLowerCase().includes(searchTerm)
+        );
+        setValueOfSort(results);
+      }
     }
-
-    // useEffect(() => {
-    //   const results = a.filter(person =>
-    //     person.toLowerCase().includes(searchTerm)
-    //   );
-    //   setValueOfSort(results);
-    // }, [searchTerm]);
 
     useEffect(() => setValueOfSort(items), [items])
 
     return (
       <>
         <div className="container-sort">
-          <div className="App">
-            <input
-              className="search-tags"
-              type="text"
-              placeholder="Search"
+          <div className="form">
+            <Form.Control type="text"
+              placeholder="Search for tags"
               value={searchTerm}
               onChange={handleChange}
             />
-
-            <button className="button-find" onClick={find}>Find</button>
+            <Button className="button-find" variant="primary" onClick={find} >Find</Button>{' '}
           </div>
-          <select onChange={onChangeStatus}  className="sort">
+          <Form.Select onChange={onChangeStatus} id="sort" aria-label="Default select example">
             <option value="Sort by">Sort by</option>
             <option value="Likes">Likes</option>
             <option value="Comments">Comments</option>
-          </select>
+          </Form.Select>
         </div>
         <div className="container">
           {valueOfSort.map(item => (

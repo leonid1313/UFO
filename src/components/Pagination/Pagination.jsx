@@ -1,5 +1,6 @@
 import React from 'react';
 import './Pagination.scss'
+import Button from 'react-bootstrap/Button';
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
@@ -13,12 +14,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
       <ul className='pagination'>
         {pageNumbers.map(number => (
           <li key={number} className='page-item'>
-            <button
-              className="button-pagination" 
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </button>
+            <Button className="button-pagination" onClick={() => paginate(number)} variant="primary">{number}</Button>{' '}
           </li>
         ))}
       </ul>

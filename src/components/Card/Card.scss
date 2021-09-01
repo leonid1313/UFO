@@ -1,8 +1,7 @@
 .container-card {
   display: flex;
   flex-basis: 22%;
-  margin: 5px;
-  border: solid 2px #3a3a3a;
+  margin-top: 50px;
   border-radius: 5px;
   flex-direction: column;
   width: 25%;
@@ -15,53 +14,10 @@
   }
 }
 
-.cardBody {
-  padding: 10px;
-}
-
-.title {
-  font-size: 20px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .image {
-  display: block;
-  width: 80%;
   height: 200px;
-  border: 1px solid red;
-  margin: 10px auto;
   cursor: pointer;
   border-radius: 5%;
-}
-
-.rank-text {
-  font-size: 35px;
-  text-align: center;
-}
-
-.button-card {
-  width: 100%;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  border-radius: 13px;
-  color: rgb(29, 8, 8);
-  background-color: rgb(72, 240, 203);
-  font-weight: 500;
-  transition: 0.3s linear;
-
-  &:hover {
-    background-color: rgb(125, 240, 72);
-  }
-}
-
-.count {
-  text-align: center;
-  color: rgb(133, 115, 14);
-}
-
-.default {
-  margin-top: 25px;
 }
 
 .link-about {
@@ -75,12 +31,11 @@
 }
 
 .tags-span {
-  background-color: #3b5998 ;
+  background-color: #0d6efd;
   border-radius: 15px;
   display: inline-block;
   margin-left: 10px;
   padding: 10px;
   margin-top: 10px;
   color: #fff;
-  border: 1px solid red;
 }
