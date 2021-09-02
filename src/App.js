@@ -8,6 +8,8 @@ import Api from './components/api/Api.jsx'
 
 import './App.scss'
 
+import Users from './components/Users/Users';
+
 
 function App () {
 
@@ -24,13 +26,14 @@ function App () {
     <>
       {loader 
         ? (
-          <>
-            <Router basename="/UFO">
-              <Header />
-              <Route path='/' exact component={Api} />
-              <Route path="/about/:item" exact component={About}/>
-            </Router>
-          </>
+          <Users/>
+          // <>
+          //   <Router basename="/UFO">
+          //     <Header />
+          //     <Route path='/' exact component={Api} />
+          //     <Route path="/about/:item" exact component={About}/>
+          //   </Router>
+          // </>
           )
         :  <Loader/>
       }

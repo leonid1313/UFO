@@ -3,29 +3,41 @@ import Card from '../Card/Card.jsx'
 import './CardList.scss'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Pagination from '../../components/Pagination/Pagination.jsx'
 
 function CardList ({
   items,
-  repos,
 }) {
-  const [valueOfSort, setValueOfSort] = useState([...items])
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(12);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  let currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  const [valueOfSort, setValueOfSort] = useState([...currentPosts])
+
+  console.log(valueOfSort);
 
     const onChangeStatus = useCallback (
       ( event) => {
         const { value } = event.target;
         switch (value) {
           case 'Sort by':
-            setValueOfSort([...items])
+            setValueOfSort([...currentPosts])
             break;
     
           case 'Likes':
-            setValueOfSort([...items].sort(function(a, b) {
+            setValueOfSort([...currentPosts].sort(function(a, b) {
               return b.likes - a.likes;
             }))
             break;
     
           case 'Comments':
-            setValueOfSort([...items].sort(function(a, b) {
+            setValueOfSort([...currentPosts].sort(function(a, b) {
               return  b.comments - a.comments;
             }))
             break;
@@ -33,7 +45,7 @@ function CardList ({
           default:
             break;
         }
-      }, [items]
+      }, [currentPosts]
     ) 
   
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,16 +56,15 @@ function CardList ({
 
     const find = () => {
       if (setSearchTerm === '') {
-        setValueOfSort([...items]);
+        setValueOfSort([...currentPosts]);
       } else {
-        const results = items.filter(person =>
+        const results = currentPosts.filter(person =>
           person.tags.toLowerCase().includes(searchTerm)
         );
         setValueOfSort(results);
       }
     }
-
-    useEffect(() => setValueOfSort(items), [items])
+    useEffect(() => setValueOfSort(currentPosts), [items])
 
     return (
       <>
@@ -73,7 +84,9 @@ function CardList ({
           </Form.Select>
         </div>
         <div className="container">
-          {valueOfSort.map(item => (
+          { (valueOfSort === [])
+            ? <h1>No card with this tag</h1>
+            : valueOfSort.map(item => (
             <>
               <Card
                 key={item.id}
@@ -84,10 +97,16 @@ function CardList ({
                 tags={item.tags}
                 comments={item.comments}
                 item={item}
+                id={item.id}
               />
             </>
           ))}
         </div>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={items.length}
+          paginate={paginate}
+        />
       </>
     )
 }

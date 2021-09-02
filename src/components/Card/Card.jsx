@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Card.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,7 @@ function Cards ({
   tags,
   comments,
   item,
+  id
 }) {
   let tagsArr = tags.split(',')
 

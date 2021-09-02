@@ -10,4 +10,11 @@
 .page-item {
   text-decoration: none;
   list-style: none;
+
+  @media (max-width: 410px) {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    flex-wrap: wrap;
+  }
 }
