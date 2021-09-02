@@ -4,7 +4,6 @@ import { getUsers } from "../../store/action/usersActions";
 
 import CardList from '../../components/CardList/CardList.jsx'
 import "./Users.scss";
-import Header from '../Header/Header.jsx'
 
 class users extends React.Component {
   componentDidMount() {
@@ -15,7 +14,6 @@ class users extends React.Component {
 
     return (
       <>
-        <Header/>
         <div className="container-search">
           <CardList items={users}/>
         </div>

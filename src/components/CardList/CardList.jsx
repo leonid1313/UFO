@@ -20,8 +20,6 @@ function CardList ({
 
   const [valueOfSort, setValueOfSort] = useState([...currentPosts])
 
-  console.log(valueOfSort);
-
     const onChangeStatus = useCallback (
       ( event) => {
         const { value } = event.target;
@@ -64,19 +62,19 @@ function CardList ({
         setValueOfSort(results);
       }
     }
-    useEffect(() => setValueOfSort(currentPosts), [items])
+    useEffect(() => setValueOfSort(currentPosts), [items, currentPage])
 
     return (
       <>
         <div className="container-sort">
-          <div className="form">
+          <form className="form" onSubmit={(event) => event.preventDefault()}>
             <Form.Control type="text"
               placeholder="Search for tags"
               value={searchTerm}
               onChange={handleChange}
             />
             <Button className="button-find" variant="primary" onClick={find} >Find</Button>{' '}
-          </div>
+          </form>
           <Form.Select onChange={onChangeStatus} id="sort" aria-label="Default select example">
             <option value="Sort by">Sort by</option>
             <option value="Likes">Likes</option>
@@ -84,7 +82,7 @@ function CardList ({
           </Form.Select>
         </div>
         <div className="container">
-          { (valueOfSort === [])
+          { (valueOfSort.length === 0)
             ? <h1>No card with this tag</h1>
             : valueOfSort.map(item => (
             <>
@@ -104,7 +102,9 @@ function CardList ({
         </div>
         <Pagination
           postsPerPage={postsPerPage}
-          totalPosts={items.length}
+          totalPosts={ (valueOfSort.length < 12)
+            ? currentPosts.length
+            : items.length}
           paginate={paginate}
         />
       </>

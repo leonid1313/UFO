@@ -5,10 +5,6 @@ import Card from 'react-bootstrap/Card';
 function About ({
   ...props
 }) {
-
-  console.log(props);
-  localStorage.setItem(props.location.data.id, JSON.stringify(props.location.data))
-
     return (
       <div className="container-about">
         <Card>
